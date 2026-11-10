@@ -1,0 +1,2 @@
+"NSLocationWhenInUseUsageDescription" = "Used to get your current location and show the local weather.";
+"CFBundleDisplayName" = "Weather";
