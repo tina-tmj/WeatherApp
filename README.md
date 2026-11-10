@@ -6,7 +6,7 @@ iOS 天氣應用，使用 UIKit 建構。使用者可以搜尋城市查看目前
 | --- | --- | --- | --- |
 | ![](docs/screenshots/01-current-weather.png) | ![](docs/screenshots/02-city-search.png) | ![](docs/screenshots/03-searched-city.png) | ![](docs/screenshots/04-empty-search.png) |
 
-設計與取捨見 [DESIGN.md](DESIGN.md)，依賴與資料流見 [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)。
+設計與取捨見 [DESIGN.md](DESIGN.md)。
 
 ## 功能
 
