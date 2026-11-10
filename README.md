@@ -6,11 +6,11 @@ iOS 天氣應用，使用 UIKit 建構。使用者可以搜尋城市查看目前
 | --- | --- | --- | --- |
 | ![](docs/screenshots/01-current-weather.png) | ![](docs/screenshots/02-city-search.png) | ![](docs/screenshots/03-searched-city.png) | ![](docs/screenshots/04-empty-search.png) |
 
-設計與取捨見 [DESIGN.md](DESIGN.md)，依賴與資料流見 [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)。
+設計與取捨見 [DESIGN.md](DESIGN.md)。
 
 ## 功能
 
-- 首次啟動取得目前位置天氣（定位只申請「使用期間」授權，只取一次位置）
+- 啟動時取得目前位置天氣
 - 搜尋城市並切換天氣，300ms 防抖，離開頁面自動取消進行中的搜尋
 - 可隨時從搜尋城市返回目前位置
 - 顯示目前溫度、體感溫度、濕度、風速、降水量與天氣狀況，以及未來 7 天預報
@@ -42,7 +42,7 @@ WeatherApp/
     Testing/                             UI 測試替身（#if DEBUG）
   Features/Weather/
     Domain/                              領域模型與 Repository 協議
-    Data/                                DTO、Open-Meteo 實作、城市選擇儲存
+    Data/                                DTO、Open-Meteo 實作
     Presentation/                        ViewController、ViewModel、可複用 View、L10n
 WeatherAppTests/                         單元測試，不存取真實 GPS 與外網
 WeatherAppUITests/                       端到端流程測試，以 -UITestMode 隔離外部依賴
@@ -53,7 +53,7 @@ docs/                                    架構說明與截圖
 
 1. 使用 Xcode 26 開啟 `WeatherApp.xcodeproj`
 2. 選擇 `WeatherApp` Scheme，`Cmd+R` 執行
-3. 測試：`Cmd+U` 執行全部測試。單元測試不存取真實 GPS 與外網；UI 測試以啟動參數 `-UITestMode` 把定位與網路換成固定結果，結果可重現。唯一例外是 `ScreenshotTests`：它用 `-PreviewCoordinates` 固定座標但走真實 API，用來產生 README 的截圖，需要網路。
+3. 測試：Cmd+U 執行全部測試。單元測試不存取真實 GPS 與外網；UI 測試以啟動參數 -UITestMode 把定位與網路換成固定結果，結果可重現。唯一例外是 ScreenshotTests：它用 -PreviewCoordinates 固定座標但走真實 API，用來產生 README 的截圖，需要網路。 
 
 - 最低支援系統：iOS 15
 - 裝置：iPhone，直向
@@ -63,5 +63,5 @@ docs/                                    架構說明與截圖
 
 - 不提供小時預報、天氣預警和空氣品質資訊，不做離線快取
 - 溫度單位為攝氏度，風速單位為 km/h，不提供單位切換
-- 只持久化最後一次選擇的城市，不儲存歷史搜尋記錄
+- 每次啟動重新定位，不儲存歷史搜尋記錄
 - 系統語言為英文、簡體中文或繁體中文以外的語言時，介面預設使用英文
